@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Collection Form - Local Testing</title>
+    <title>Payment Collection Form</title>
     <style>
         * {
             margin: 0;
@@ -44,16 +44,6 @@
         .header p {
             color: #666;
             font-size: 14px;
-        }
-
-        .local-notice {
-            background: #e3f2fd;
-            color: #1976d2;
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-size: 14px;
-            border-left: 4px solid #2196f3;
         }
 
         .form-group {
@@ -170,7 +160,7 @@
             gap: 15px;
         }
 
-        /* Updated Phone Input Styles */
+        /* Phone Input Styles */
         .phone-input-container {
             display: grid;
             grid-template-columns: 140px 1fr;
@@ -288,10 +278,6 @@
         <div class="header">
             <h1>Payment Collection Form</h1>
             <p>Collect and manage customer payments efficiently</p>
-        </div>
-
-        <div class="local-notice">
-            <strong>🌐 Google Sheets Integration:</strong> Data will be saved to your Google Sheets via Apps Script.
         </div>
 
         <form id="paymentForm">
@@ -424,10 +410,10 @@
     </div>
 
     <script>
-        // REPLACE WITH YOUR ACTUAL GOOGLE APPS SCRIPT URL
+        // Your Google Apps Script URL (already configured)
         const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwdQKtY4NCPJM2tVHOl9QCEAJyJ4tVN8Wma7FrPzZXsqUpVFdTklgegjRuucV3vArw/exec';
         
-        // Country Code Database (comprehensive list)
+        // Country Code Database
         const COUNTRIES = [
             { name: 'Afghanistan', code: 93 },
             { name: 'Albania', code: 355 },
@@ -435,9 +421,6 @@
             { name: 'American Samoa', code: 1 },
             { name: 'Andorra', code: 376 },
             { name: 'Angola', code: 244 },
-            { name: 'Anguilla', code: 1 },
-            { name: 'Antarctica', code: 672 },
-            { name: 'Antigua and Barbuda', code: 1 },
             { name: 'Argentina', code: 54 },
             { name: 'Armenia', code: 374 },
             { name: 'Aruba', code: 297 },
@@ -458,7 +441,6 @@
             { name: 'Bosnia and Herzegovina', code: 387 },
             { name: 'Botswana', code: 267 },
             { name: 'Brazil', code: 55 },
-            { name: 'British Virgin Islands', code: 1 },
             { name: 'Brunei', code: 673 },
             { name: 'Bulgaria', code: 359 },
             { name: 'Burkina Faso', code: 226 },
@@ -467,17 +449,13 @@
             { name: 'Cameroon', code: 237 },
             { name: 'Canada', code: 1 },
             { name: 'Cape Verde', code: 238 },
-            { name: 'Cayman Islands', code: 1 },
             { name: 'Central African Republic', code: 236 },
             { name: 'Chad', code: 235 },
             { name: 'Chile', code: 56 },
             { name: 'China', code: 86 },
-            { name: 'Christmas Island', code: 61 },
-            { name: 'Cocos Islands', code: 61 },
             { name: 'Colombia', code: 57 },
             { name: 'Comoros', code: 269 },
             { name: 'Congo', code: 242 },
-            { name: 'Cook Islands', code: 682 },
             { name: 'Costa Rica', code: 506 },
             { name: 'Croatia', code: 385 },
             { name: 'Cuba', code: 53 },
@@ -486,9 +464,7 @@
             { name: 'Democratic Republic of the Congo', code: 243 },
             { name: 'Denmark', code: 45 },
             { name: 'Djibouti', code: 253 },
-            { name: 'Dominica', code: 1 },
             { name: 'Dominican Republic', code: 1 },
-            { name: 'East Timor', code: 670 },
             { name: 'Ecuador', code: 593 },
             { name: 'Egypt', code: 20 },
             { name: 'El Salvador', code: 503 },
@@ -496,12 +472,9 @@
             { name: 'Eritrea', code: 291 },
             { name: 'Estonia', code: 372 },
             { name: 'Ethiopia', code: 251 },
-            { name: 'Falkland Islands', code: 500 },
-            { name: 'Faroe Islands', code: 298 },
             { name: 'Fiji', code: 679 },
             { name: 'Finland', code: 358 },
             { name: 'France', code: 33 },
-            { name: 'French Polynesia', code: 689 },
             { name: 'Gabon', code: 241 },
             { name: 'Gambia', code: 220 },
             { name: 'Georgia', code: 995 },
@@ -510,8 +483,6 @@
             { name: 'Gibraltar', code: 350 },
             { name: 'Greece', code: 30 },
             { name: 'Greenland', code: 299 },
-            { name: 'Grenada', code: 1 },
-            { name: 'Guam', code: 1 },
             { name: 'Guatemala', code: 502 },
             { name: 'Guinea', code: 224 },
             { name: 'Guinea-Bissau', code: 245 },
@@ -534,7 +505,6 @@
             { name: 'Jordan', code: 962 },
             { name: 'Kazakhstan', code: 7 },
             { name: 'Kenya', code: 254 },
-            { name: 'Kiribati', code: 686 },
             { name: 'Kuwait', code: 965 },
             { name: 'Kyrgyzstan', code: 996 },
             { name: 'Laos', code: 856 },
@@ -554,61 +524,44 @@
             { name: 'Maldives', code: 960 },
             { name: 'Mali', code: 223 },
             { name: 'Malta', code: 356 },
-            { name: 'Marshall Islands', code: 692 },
             { name: 'Mauritania', code: 222 },
             { name: 'Mauritius', code: 230 },
-            { name: 'Mayotte', code: 262 },
             { name: 'Mexico', code: 52 },
-            { name: 'Micronesia', code: 691 },
             { name: 'Moldova', code: 373 },
             { name: 'Monaco', code: 377 },
             { name: 'Mongolia', code: 976 },
             { name: 'Montenegro', code: 382 },
-            { name: 'Montserrat', code: 1 },
             { name: 'Morocco', code: 212 },
             { name: 'Mozambique', code: 258 },
             { name: 'Myanmar', code: 95 },
             { name: 'Namibia', code: 264 },
-            { name: 'Nauru', code: 674 },
             { name: 'Nepal', code: 977 },
             { name: 'Netherlands', code: 31 },
-            { name: 'Netherlands Antilles', code: 599 },
-            { name: 'New Caledonia', code: 687 },
             { name: 'New Zealand', code: 64 },
             { name: 'Nicaragua', code: 505 },
             { name: 'Niger', code: 227 },
             { name: 'Nigeria', code: 234 },
-            { name: 'Niue', code: 683 },
-            { name: 'Norfolk Island', code: 672 },
             { name: 'North Korea', code: 850 },
-            { name: 'Northern Mariana Islands', code: 1 },
             { name: 'Norway', code: 47 },
             { name: 'Oman', code: 968 },
             { name: 'Pakistan', code: 92 },
-            { name: 'Palau', code: 680 },
             { name: 'Palestine', code: 970 },
             { name: 'Panama', code: 507 },
             { name: 'Papua New Guinea', code: 675 },
             { name: 'Paraguay', code: 595 },
             { name: 'Peru', code: 51 },
             { name: 'Philippines', code: 63 },
-            { name: 'Pitcairn', code: 870 },
             { name: 'Poland', code: 48 },
             { name: 'Portugal', code: 351 },
             { name: 'Puerto Rico', code: 1 },
             { name: 'Qatar', code: 974 },
-            { name: 'Reunion', code: 262 },
             { name: 'Romania', code: 40 },
             { name: 'Russia', code: 7 },
             { name: 'Rwanda', code: 250 },
-            { name: 'Saint Helena', code: 290 },
             { name: 'Saint Kitts and Nevis', code: 1 },
             { name: 'Saint Lucia', code: 1 },
-            { name: 'Saint Pierre and Miquelon', code: 508 },
-            { name: 'Saint Vincent and the Grenadines', code: 1 },
             { name: 'Samoa', code: 685 },
             { name: 'San Marino', code: 378 },
-            { name: 'Sao Tome and Principe', code: 239 },
             { name: 'Saudi Arabia', code: 966 },
             { name: 'Senegal', code: 221 },
             { name: 'Serbia', code: 381 },
@@ -635,14 +588,11 @@
             { name: 'Tanzania', code: 255 },
             { name: 'Thailand', code: 66 },
             { name: 'Togo', code: 228 },
-            { name: 'Tokelau', code: 690 },
             { name: 'Tonga', code: 676 },
             { name: 'Trinidad and Tobago', code: 1 },
             { name: 'Tunisia', code: 216 },
             { name: 'Turkey', code: 90 },
             { name: 'Turkmenistan', code: 993 },
-            { name: 'Turks and Caicos Islands', code: 1 },
-            { name: 'Tuvalu', code: 688 },
             { name: 'Uganda', code: 256 },
             { name: 'Ukraine', code: 380 },
             { name: 'United Arab Emirates', code: 971 },
@@ -654,9 +604,6 @@
             { name: 'Vatican', code: 39 },
             { name: 'Venezuela', code: 58 },
             { name: 'Vietnam', code: 84 },
-            { name: 'Virgin Islands', code: 1 },
-            { name: 'Wallis and Futuna', code: 681 },
-            { name: 'Western Sahara', code: 212 },
             { name: 'Yemen', code: 967 },
             { name: 'Zambia', code: 260 },
             { name: 'Zimbabwe', code: 263 }
@@ -696,10 +643,9 @@
 
         let currentCustomerData = null;
         let selectedCountryCode = 91; // Default to India
-
-        // Country search functionality
         let highlightedIndex = -1;
 
+        // Country search functionality
         countrySearchInput.addEventListener('input', function() {
             const query = this.value.toLowerCase();
             const filtered = COUNTRIES.filter(country => 
@@ -739,7 +685,7 @@
                 );
                 renderCountryOptions(filtered);
             } else {
-                renderCountryOptions(COUNTRIES.slice(0, 10)); // Show top 10 initially
+                renderCountryOptions(COUNTRIES.slice(0, 10));
             }
         });
 
@@ -807,9 +753,6 @@
             updatePhonePreview();
         });
 
-        // Initialize
-        updatePhonePreview();
-
         // Payment type change handler
         paymentTypeSelect.addEventListener('change', function() {
             const paymentType = this.value;
@@ -849,13 +792,12 @@
         amountPaidInput.addEventListener('input', calculateBalance);
         amountQuotedInput.addEventListener('input', calculateBalance);
 
-        // Fetch customer data function (Google Apps Script)
+        // Fetch customer data function
         async function fetchCustomerData(email) {
             try {
                 setLoading(true);
                 clearError(emailError);
 
-                // Call Google Apps Script
                 const response = await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
                     headers: {
@@ -897,7 +839,6 @@
             // Handle phone number with country code
             if (data.phone) {
                 const phoneStr = data.phone.toString();
-                // Find matching country by code
                 const matchedCountry = COUNTRIES.find(country => 
                     phoneStr.startsWith(`+${country.code}`)
                 );
@@ -908,7 +849,6 @@
                     countryCodeDisplay.textContent = `+${matchedCountry.code}`;
                     phoneInput.value = phoneStr.substring(matchedCountry.code.toString().length + 1);
                 } else {
-                    // Default handling
                     selectedCountryCode = 91;
                     countrySearchInput.value = 'India';
                     countryCodeDisplay.textContent = '+91';
@@ -934,12 +874,10 @@
             const paid = parseFloat(amountPaidInput.value) || 0;
             let balance = quoted - paid;
 
-            // For balance payments, adjust calculation
             if (currentCustomerData && (paymentTypeSelect.value === 'balance_partial' || paymentTypeSelect.value === 'balance_completed')) {
                 const remainingBalance = currentCustomerData.amountQuoted - currentCustomerData.totalPaid;
                 balance = remainingBalance - paid;
 
-                // Validate against overpayment
                 if (paid > remainingBalance) {
                     showError(amountError, `Payment cannot exceed remaining balance of ₹${remainingBalance.toLocaleString()}`);
                     balanceInput.value = '';
@@ -964,7 +902,6 @@
                 setLoading(true);
                 const formData = collectFormData();
                 
-                // Submit to Google Apps Script
                 const response = await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
                     headers: {
@@ -984,7 +921,6 @@
                 
                 if (result.success) {
                     alert('Payment recorded successfully!');
-                    console.log('Payment Data:', formData);
                     form.reset();
                     resetForm();
                 } else {
@@ -1062,7 +998,6 @@
             balanceInfoSection.classList.add('hidden');
             setCustomerFieldsReadonly(false);
             currentCustomerData = null;
-            // Reset to default country
             countrySearchInput.value = 'India';
             selectedCountryCode = 91;
             countryCodeDisplay.textContent = '+91';
@@ -1072,7 +1007,6 @@
         function validateForm() {
             let isValid = true;
 
-            // Validate payment amount for balance payments
             if (currentCustomerData && (paymentTypeSelect.value === 'balance_partial' || paymentTypeSelect.value === 'balance_completed')) {
                 const paid = parseFloat(amountPaidInput.value) || 0;
                 const remainingBalance = currentCustomerData.amountQuoted - currentCustomerData.totalPaid;
@@ -1119,7 +1053,7 @@
             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         }
 
-        // Initialize with default country
+        // Initialize
         countrySearchInput.value = 'India';
         selectedCountryCode = 91;
         countryCodeDisplay.textContent = '+91';
